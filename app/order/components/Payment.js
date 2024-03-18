@@ -1,14 +1,16 @@
 'use client'
 
 import React, { useState } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure, ModalFooter, Divider} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, Button, useDisclosure, Divider} from "@nextui-org/react";
 import SuccessIcon from '@/app/assets/SuccessIcon';
 
 export default function Payment({totals, subtotal, currency, onPaid}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [isPaymentLoading, setPaymentLoading] = useState(false);
   const [isPaid, setPaid] = useState(false);
-  const discount = subtotal + Number(totals.tax) ?Number(totals.discount).toFixed(2) :(0).toFixed(2);
+  const discount = subtotal + Number(totals.tax) ? Number(totals.discount).toFixed(2) : (0).toFixed(2);
+  let total = (subtotal + Number(totals.tax) - discount);
+  total = total > 0  ? total : 0;
 
   const handlePay = () => {
     setPaymentLoading(true);
@@ -40,13 +42,13 @@ export default function Payment({totals, subtotal, currency, onPaid}) {
       <Divider className=' mt-4 mb-4'/>
       <div className='flex w-full justify-between font-medium'>
         <div>Total</div>
-        <div>{`$${(subtotal + Number(totals.tax) - discount).toFixed(2)} ${currency}`}</div>
+        <div>{`$${total.toFixed(2)} ${currency}`}</div>
       </div>
       {!isPaid 
-        ?<Button color='primary' isDisabled={isPaid} onPress={handlePay} isLoading={isPaymentLoading} className='w-full mt-4'>
+        ? <Button color='primary' isDisabled={isPaid || total <= 0} onPress={handlePay} isLoading={isPaymentLoading} className='w-full mt-4'>
           Pay
         </Button> 
-        :null}
+        : null}
         
       <Modal 
         isOpen={isOpen} 

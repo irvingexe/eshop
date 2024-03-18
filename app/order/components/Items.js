@@ -41,15 +41,15 @@ export default function Items({order}) {
                   <TableCell className="font-medium break-words break-word">{item.quantity}</TableCell>
                   <TableCell className="font-medium break-words break-word">{`$${(Number(item.price) * Number(item.quantity)).toFixed(2)}`}</TableCell>
                   <TableCell>
-                    {!isPaid ?<span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={()=>removeItem(i)}>
+                    {!isPaid ? <span className="text-lg text-danger cursor-pointer active:opacity-50" onClick={()=>removeItem(i)}>
                     <DeleteIcon />
-                    </span> :null}
+                    </span> : null}
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-          {!isPaid ?<NewItem onNewItem= {(e) => setItems([...itemsList, e])}/> :null}
+          {!isPaid ?<NewItem onNewItem= {(e) => setItems([...itemsList, e])}/> : null}
         </div>
       </CardBody>
       <Divider/>

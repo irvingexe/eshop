@@ -59,7 +59,7 @@ export default function OrderTable({orders}) {
                 </Chip>
               </TableCell>
               <TableCell className="w-20">
-                {selected === i ?<Spinner /> :null}
+                {selected === i ? <Spinner /> : null}
               </TableCell>
             </TableRow>
           ))}
