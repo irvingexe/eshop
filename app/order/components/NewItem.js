@@ -12,8 +12,14 @@ export default function NewItem({onNewItem}) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onNewItem(item);
-    setItem(emptyItem);
+    if (!Object.values(item).some(e => !e)) {
+      onNewItem(item);
+      setItem(emptyItem);
+    }
+  }
+
+  const validateNumber = (num, next) => {
+    if (num === '' || Number(num) > 0) next();
   }
 
   return (
@@ -50,7 +56,7 @@ export default function NewItem({onNewItem}) {
                       variant={'faded'} 
                       label="Quantity" 
                       value={item.quantity}
-                      onValueChange= {e=>setItem({...item, quantity: Number(e)})}
+                      onValueChange= {e=>validateNumber(e, ()=>setItem({...item, quantity: Number(e)}))}
                       isRequired
                       isInvalid={isErrorVisible && !item.quantity}
                       errorMessage={isErrorVisible && !item.quantity && "This field is required"}
@@ -60,7 +66,7 @@ export default function NewItem({onNewItem}) {
                       variant={'faded'} 
                       label="Price" 
                       value={item.price}
-                      onValueChange= {e=>setItem({...item, price: Number(e)})}
+                      onValueChange= {e=>validateNumber(e, ()=>setItem({...item, price: Number(e)}))}
                       isRequired
                       isInvalid={isErrorVisible && !item.price}
                       errorMessage={isErrorVisible && !item.price && "This field is required"}
