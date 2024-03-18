@@ -1,0 +1,17 @@
+.detail {
+  flex: 1;
+
+  .delivery {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .order {
+    flex-direction: column;
+
+    .items {
+      width: 100%;
+    }
+  }
+}
