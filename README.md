@@ -17,7 +17,7 @@ Features:
 - Tailwind CSS
 
 # Demo
-Visit [https://eshop-2k23p3em1-irvingexes-projects.vercel.app/](https://eshop-2k23p3em1-irvingexes-projects.vercel.app/) to see the live version of this app 
+Visit [https://eshop-irvingexes-projects.vercel.app/](https://eshop-irvingexes-projects.vercel.app/) to see the live version of this app 
 
 # Getting Started
 
