@@ -17,7 +17,7 @@ Features:
 - Tailwind CSS
 
 # Demo
-Visit [https://nextjs-ecommerce.vercel.app/](https://nextjs-ecommerce.vercel.app/) to see the live version of this app 
+Visit [https://eshop-2k23p3em1-irvingexes-projects.vercel.app/](https://eshop-2k23p3em1-irvingexes-projects.vercel.app/) to see the live version of this app 
 
 # Getting Started
 
